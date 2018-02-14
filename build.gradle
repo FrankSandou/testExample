@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+    project.ext {
+        serenityVersion = '1.8.21'
+    }
+
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+
+    dependencies {
+        classpath('net.serenity-bdd:serenity-gradle-plugin:' + serenityVersion)
+    }
+}
+
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'net.serenity-bdd:serenity-core:' + serenityVersion
+    testCompile 'net.serenity-bdd:serenity-junit:' + serenityVersion
+    testCompile 'org.assertj:assertj-core:3.4+'
+    testCompile 'org.slf4j:slf4j-simple:1.7+'
+}
+
+gradle.startParameter.continueOnFailure = true
